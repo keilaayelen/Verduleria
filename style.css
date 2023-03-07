@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-.bodyShop {
+#body {
     background-color: rgba(190, 88, 4, 0.363);
 }
 
@@ -59,11 +59,11 @@
     margin-top: 20px;
 }
 
-.card > img {
+.card>img {
     width: 90%;
     height: 250px;
     margin-top: 5px;
-    
+
 }
 
 .price {
@@ -81,11 +81,11 @@
     cursor: pointer;
     width: 100%;
     font-size: 18px;
-    
+
 }
 
 .card button:hover {
-    opacity: 0.7;
+    background-color: rgb(252, 14, 14);
 }
 
 /* Cartel de carrito */
@@ -130,7 +130,7 @@ h3 {
     padding-left: 85px;
 }
 
-.modalContainer > .modalContent {
+.modalContainer>.modalContent {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -139,7 +139,7 @@ h3 {
     margin: 10px;
 }
 
-.modalContainer > div > img {
+.modalContainer>div>img {
     height: 120px;
     width: 120px;
 }
@@ -155,4 +155,7 @@ h3 {
     padding-top: 20px;
 }
 
-
+.bnt:hover {
+    background-color: rgb(252, 14, 14);
+    opacity: 0.5;
+}

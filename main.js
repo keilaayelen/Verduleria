@@ -3,7 +3,6 @@ const shopContent = document.getElementById("shopContent");
 const verCarrito = document.getElementById("verCarrito");
 const modalContainer = document.getElementById("modalContainer");
 
-
 // Mis productos 
 const productos = [
     {
@@ -56,10 +55,8 @@ const productos = [
     }
 ]
 
-// [   ]
-// <  >
-//Ver carrito
 
+//Ver carrito
 let carrito = [];
 productos.forEach((product) => {
     let content = document.createElement("div");
@@ -87,6 +84,7 @@ productos.forEach((product) => {
     });
 });
 
+
 //Eventos 
 verCarrito.addEventListener("click", () => {
     modalContainer.style.display = "flex";
@@ -102,7 +100,7 @@ verCarrito.addEventListener("click", () => {
     modalbutton.innerText = "x";
     modalbutton.className = "modalHeaderButton";
 
-    modalbutton.addEventListener ("click", () => {
+    modalbutton.addEventListener("click", () => {
         modalContainer.style.display = "none";
     });
 
@@ -116,14 +114,39 @@ verCarrito.addEventListener("click", () => {
         <h3> ${product.nombre}</h3>
         <p>$${product.precio}</p>
     `;
-    modalContainer.append (carritoContent);
+        modalContainer.append(carritoContent);
     });
 
     const total = carrito.reduce((acc, el) => acc + el.precio, 0);
-    const totalFinal = document.createElement ("div");
+    const totalFinal = document.createElement("div");
     totalFinal.className = "totalFinal";
     totalFinal.innerHTML = `El total a pagar es $${total}`;
     modalContainer.append(totalFinal);
+});
+
+
+// Boton de Dark Mode
+const botonColorMode = document.querySelector("color-mode");
+const body = document.body;
+
+let darkMode = localStorage.getItem("dark-mode");
+
+function activarDarkMode() {
+    body.classList.add("dark-mode");
+    localStorage.setItem("dark-mode", "activado");
+}
+function desactivarDarkMode() {
+    body.classList.remove("dark-mode");
+    localStorage.setItem("dark-mode", "desactivado");
+}
+
+botonColorMode.addEventListener("click", () => {
+    darkMode = localStorage.getItem("dark-mode");
+    if (darkMode === "activado") {
+        desactivarDarkMode();
+    } else {
+        activarDarkMode();
+    }
 });
 
 
