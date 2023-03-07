@@ -1,0 +1,158 @@
+/* Reset */
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.bodyShop {
+    background-color: rgba(190, 88, 4, 0.363);
+}
+
+/* nav */
+.navContainer {
+    position: sticky;
+    z-index: 3;
+    top: 0%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 12vh;
+    background-color: rgba(216, 149, 93, 0.884);
+}
+
+.navbarLogo {
+    justify-self: start;
+    margin-left: 20px;
+    color: rgb(71, 58, 38);
+    margin-top: 1vh;
+    cursor: pointer;
+}
+
+.verCarrito {
+    font-size: 25px;
+    margin-right: 20px;
+    margin-top: 1vh;
+    cursor: pointer;
+}
+
+/* contenido de la tienda */
+.shopContent {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.card {
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.815);
+    max-width: 250px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.card > img {
+    width: 90%;
+    height: 250px;
+    margin-top: 5px;
+    
+}
+
+.price {
+    color: rgba(165, 42, 42, 0.986);
+    font-size: 22px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.87);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    
+}
+
+.card button:hover {
+    opacity: 0.7;
+}
+
+/* Cartel de carrito */
+.modalContainer {
+    width: 30%;
+    margin: 0 35%;
+    max-height: 80vh;
+    color: rgba(255, 255, 255, 0.932);
+    background-color: rgba(29, 10, 46, 0.89);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    overflow: auto;
+    z-index: 9;
+    top: 10vh;
+    scrollbar-color: none;
+}
+
+.modalContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+    color: white;
+    width: 100%;
+}
+
+h3 {
+    padding: 10px;
+}
+
+.modalHeaderTitle {
+    justify-self: start;
+}
+
+.modalHeaderButton {
+    cursor: pointer;
+    padding-left: 85px;
+}
+
+.modalContainer > .modalContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    margin: 10px;
+}
+
+.modalContainer > div > img {
+    height: 120px;
+    width: 120px;
+}
+
+.modalContent {
+    margin: 0px;
+}
+
+.totalFinal {
+    font-size: 25px;
+    padding: 20px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+
