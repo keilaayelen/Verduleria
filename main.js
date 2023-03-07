@@ -140,7 +140,7 @@ verCarrito.addEventListener("click", () => {
 
 
 // Boton de Dark Mode
-const botonColorMode = document.getElementById("color-mode");;
+const botonColorMode = document.querySelector("#color-mode");
 const body = document.body;
 
 let darkMode = localStorage.getItem("dark-mode");
@@ -149,6 +149,7 @@ function activarDarkMode() {
     body.classList.add("dark-mode");
     localStorage.setItem("dark-mode", "activado");
 }
+
 function desactivarDarkMode() {
     body.classList.remove("dark-mode");
     localStorage.setItem("dark-mode", "desactivado");
@@ -162,6 +163,16 @@ botonColorMode.addEventListener("click", () => {
         activarDarkMode();
     }
 });
+function comprobarModo() {
+    darkMode = localStorage.getItem("dark-mode");
+    if (darkMode === "activado") {
+        activarDarkMode();
+    } else {
+        desactivarDarkMode();
+    }
+}
+
+comprobarModo();
 
 
 

@@ -9,6 +9,12 @@
     background-color: rgba(190, 88, 4, 0.363);
 }
 
+/* Dark Mode */
+.dark-mode {
+    background-color: #0d0e33;
+    color: #ffffff;
+}
+
 /* nav */
 .navContainer {
     position: sticky;
