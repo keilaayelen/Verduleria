@@ -1,3 +1,17 @@
+// JSON
+let usuarioIngresado = prompt("Ingrese su nombre");
+localStorage.setItem("usuario-ingresado", usuarioIngresado);
+let usuarioIngresadoEnLocalStorage = localStorage.getItem("usuario-ingresado");
+
+const usuario = {
+    nombre: "",
+    edad: ""
+}
+localStorage.setItem("usuario", JSON.stringify(usuario));
+const usuarioEnLS = JSON.parse(localStorage.getItem("usuario"));
+console.log(usuarioEnLS);
+
+
 // Mis contenedores
 const shopContent = document.getElementById("shopContent");
 const verCarrito = document.getElementById("verCarrito");
@@ -126,7 +140,7 @@ verCarrito.addEventListener("click", () => {
 
 
 // Boton de Dark Mode
-const botonColorMode = document.querySelector("color-mode");
+const botonColorMode = document.getElementById("color-mode");;
 const body = document.body;
 
 let darkMode = localStorage.getItem("dark-mode");
