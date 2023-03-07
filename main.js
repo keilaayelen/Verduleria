@@ -138,8 +138,7 @@ verCarrito.addEventListener("click", () => {
     modalContainer.append(totalFinal);
 });
 
-
-// Boton de Dark Mode
+//Dark Mode
 const botonColorMode = document.querySelector("#color-mode");
 const body = document.body;
 
@@ -173,6 +172,5 @@ function comprobarModo() {
 }
 
 comprobarModo();
-
 
 

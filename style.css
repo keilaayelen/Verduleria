@@ -11,8 +11,8 @@
 
 /* Dark Mode */
 .dark-mode {
-    background-color: #0d0e33;
-    color: #ffffff;
+    background-color: #080927ea !important;
+    color: #b64f4f;
 }
 
 /* nav */
@@ -26,13 +26,13 @@
     display: flex;
     justify-content: space-between;
     height: 12vh;
-    background-color: rgba(216, 149, 93, 0.884);
+    background-color: rgba(216, 148, 93, 0.356);
 }
 
 .navbarLogo {
     justify-self: start;
     margin-left: 20px;
-    color: rgb(71, 58, 38);
+    color: rgb(8, 6, 3);
     margin-top: 1vh;
     cursor: pointer;
 }
