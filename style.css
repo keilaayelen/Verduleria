@@ -167,6 +167,11 @@ h3 {
 }
 
 
+/* Borrar producto del carrito */
+.delete-product {
+    cursor: pointer;
+}
+
 
 /* Foooter */
 footer {

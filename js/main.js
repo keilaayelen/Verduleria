@@ -1,21 +1,17 @@
-// JSON
-let usuarioIngresado = prompt("Ingrese su nombre");
-localStorage.setItem("usuario-ingresado", usuarioIngresado);
-let usuarioIngresadoEnLocalStorage = localStorage.getItem("usuario-ingresado");
-
-const usuario = {
-    nombre: "",
-    edad: ""
-}
-localStorage.setItem("usuario", JSON.stringify(usuario));
-const usuarioEnLS = JSON.parse(localStorage.getItem("usuario"));
-console.log(usuarioEnLS);
+// Json
+fetch("./js/productos.json")
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        pintarCarrito(productos);
+    });
 
 
 // Mis contenedores
 const shopContent = document.getElementById("shopContent");
 const verCarrito = document.getElementById("verCarrito");
 const modalContainer = document.getElementById("modalContainer");
+
 
 // Mis productos 
 const productos = [
@@ -100,7 +96,11 @@ productos.forEach((product) => {
 
 
 //Eventos 
-verCarrito.addEventListener("click", () => {
+// Ver carrito
+
+const pintarCarrito = () => {
+
+    modalContainer.innerHTML = "";
     modalContainer.style.display = "flex";
     const modalHeader = document.createElement("div");
     modalHeader.className = "modal-header"
@@ -120,6 +120,7 @@ verCarrito.addEventListener("click", () => {
 
     modalHeader.append(modalbutton);
 
+    // Mostrar mi compra
     carrito.forEach((product) => {
         let carritoContent = document.createElement("div");
         carritoContent.className = "modalContent";
@@ -129,14 +130,43 @@ verCarrito.addEventListener("click", () => {
         <p>$${product.precio}</p>
     `;
         modalContainer.append(carritoContent);
+
+        // Eliminar productos
+        let eliminar = document.createElement("span");
+
+        eliminar.innerText = "❌";
+        eliminar.className = "delete-product";
+        carritoContent.append(eliminar);
+
+        eliminar.addEventListener("click", eliminarProducto);
     });
 
+
+    // Resultado de mi compra
     const total = carrito.reduce((acc, el) => acc + el.precio, 0);
     const totalFinal = document.createElement("div");
     totalFinal.className = "totalFinal";
     totalFinal.innerHTML = `El total a pagar es $${total}`;
     modalContainer.append(totalFinal);
-});
+};
+
+// Funcionalidad al boton
+verCarrito.addEventListener("click", pintarCarrito)
+
+// Dandole funcionalidad a mi boton de eliminar producto del carrito
+const eliminarProducto = () => {
+    const foundId = carrito.find((element) => element.id);
+
+    carrito = carrito.filter((carritoId) => {
+        return carritoId !== foundId;
+    });
+
+    pintarCarrito();
+};
+
+
+
+
 
 //Dark Mode
 const botonColorMode = document.querySelector("#color-mode");
@@ -162,6 +192,7 @@ botonColorMode.addEventListener("click", () => {
         activarDarkMode();
     }
 });
+
 function comprobarModo() {
     darkMode = localStorage.getItem("dark-mode");
     if (darkMode === "activado") {
