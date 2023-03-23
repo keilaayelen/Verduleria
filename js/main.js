@@ -3,7 +3,7 @@ fetch("./js/productos.json")
     .then(response => response.json())
     .then(data => {
         productos = data;
-        pintarCarrito(productos);
+        productos(productos);
     });
 
 
@@ -19,54 +19,62 @@ const productos = [
         id: 1,
         nombre: "Tomate",
         precio: 300,
-        img: "https://th.bing.com/th/id/OIP.jP2VYVGUy-fX0djlFDZGfAHaE6?pid=ImgDet&rs=1"
+        img: "https://th.bing.com/th/id/OIP.jP2VYVGUy-fX0djlFDZGfAHaE6?pid=ImgDet&rs=1",
+        cantidad: 1,
     },
     {
         id: 2,
         nombre: "Cebolla",
         precio: 450,
-        img: "https://greens.com.gt/wp-content/uploads/2020/04/Cebolla-Blanca.jpg"
+        img: "https://greens.com.gt/wp-content/uploads/2020/04/Cebolla-Blanca.jpg",
+        cantidad: 1,
     },
     {
         id: 3,
         nombre: "Morron",
         precio: 500,
-        img: "https://th.bing.com/th/id/R.9a8f44ccd90741895d112201db2d5119?rik=5NnavbO5sH2Q1Q&riu=http%3a%2f%2flahoradelasalud.com%2fblog%2fwp-content%2fuploads%2f2020%2f11%2fMORRON-2-1024x768.jpg&ehk=ti%2bEqGyc%2foxEwce%2fdAw71pxsmzSs1FZq%2f8Gd%2fJR%2f%2faY%3d&risl=&pid=ImgRaw&r=0"
+        img: "https://th.bing.com/th/id/R.9a8f44ccd90741895d112201db2d5119?rik=5NnavbO5sH2Q1Q&riu=http%3a%2f%2flahoradelasalud.com%2fblog%2fwp-content%2fuploads%2f2020%2f11%2fMORRON-2-1024x768.jpg&ehk=ti%2bEqGyc%2foxEwce%2fdAw71pxsmzSs1FZq%2f8Gd%2fJR%2f%2faY%3d&risl=&pid=ImgRaw&r=0",
+        cantidad: 1,
     },
     {
         id: 4,
         nombre: "Papa",
         precio: 200,
-        img: "https://www.todoparaellas.com/u/fotografias/m/2021/3/5/f800x450-18927_70373_5050.jpg"
+        img: "https://www.todoparaellas.com/u/fotografias/m/2021/3/5/f800x450-18927_70373_5050.jpg",
+        cantidad: 1,
     },
     {
         id: 5,
         nombre: "Ajo",
         precio: 100,
-        img: "https://cdn.cienradios.com/wp-content/uploads/sites/3/2020/09/ajo.jpg"
+        img: "https://cdn.cienradios.com/wp-content/uploads/sites/3/2020/09/ajo.jpg",
+        cantidad: 1,
     },
     {
         id: 6,
         nombre: "Manzana",
         precio: 280,
-        img: "https://th.bing.com/th/id/OIP.YdBKMKhZk429atkjPqNh1AHaHa?pid=ImgDet&rs=1"
+        img: "https://th.bing.com/th/id/OIP.YdBKMKhZk429atkjPqNh1AHaHa?pid=ImgDet&rs=1",
+        cantidad: 1,
     },
     {
         id: 7,
         nombre: "Brocoli",
         precio: 670,
-        img: "https://misremedios.com/wp-content/uploads/2016/09/brocoli.jpg"
+        img: "https://misremedios.com/wp-content/uploads/2016/09/brocoli.jpg",
+        cantidad: 1,
     },
     {
         id: 8,
         nombre: "Hongos",
         precio: 170,
-        img: "https://th.bing.com/th/id/OIP.VlSO5XMwrnMHYs5qQ9JOfgHaE7?pid=ImgDet&rs=1"
+        img: "https://th.bing.com/th/id/OIP.VlSO5XMwrnMHYs5qQ9JOfgHaE7?pid=ImgDet&rs=1",
+        cantidad: 1,
     }
 ]
 
 
-//Ver carrito
+//Agregar productos al carrito
 let carrito = [];
 productos.forEach((product) => {
     let content = document.createElement("div");
@@ -75,6 +83,7 @@ productos.forEach((product) => {
     <img src= "${product.img}">
     <h3> ${product.nombre}</h3>
     <p class="price">${product.precio}</p>
+    <p> Cantidad: ${product.cantidad}</p>
     `;
 
     shopContent.append(content);
@@ -90,7 +99,9 @@ productos.forEach((product) => {
             img: product.img,
             nombre: product.nombre,
             precio: product.precio,
+            cantidad: product.cantidad,
         });
+        saveLocal();
     });
 });
 
@@ -100,6 +111,7 @@ productos.forEach((product) => {
 
 const pintarCarrito = () => {
 
+    //Creando recuadro de Carrito
     modalContainer.innerHTML = "";
     modalContainer.style.display = "flex";
     const modalHeader = document.createElement("div");
@@ -155,6 +167,22 @@ verCarrito.addEventListener("click", pintarCarrito)
 
 // Dandole funcionalidad a mi boton de eliminar producto del carrito
 const eliminarProducto = () => {
+    //Libreria..
+    Toastify({
+        text: "Producto eliminado",
+        duration: 1300,
+        destination: "https://github.com/apvarun/toastify-js",
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "left",
+        stopOnFocus: true,
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+        },
+        onClick: function () { }
+    }).showToast();
+
     const foundId = carrito.find((element) => element.id);
 
     carrito = carrito.filter((carritoId) => {
@@ -165,6 +193,11 @@ const eliminarProducto = () => {
 };
 
 
+
+// set item 
+const saveLocal = () => {
+    localStorage.setItem("guardarCarro", JSON.stringify(carrito));
+};
 
 
 
@@ -203,5 +236,8 @@ function comprobarModo() {
 }
 
 comprobarModo();
+
+
+
 
 
