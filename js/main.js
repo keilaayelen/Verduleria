@@ -1,80 +1,26 @@
 let productos = [];
+const agregarProductos = productos => {
+    productos.forEach(function (agregarCarrito) {
+        console.log(agregarCarrito);
+    });
+};
 
 // Json
+/* fetch("./productos.json")
+    .then(response => response.json())
+    .then(data => {
+        productos = data;
+        productos(productos);
+    }); */
+
 fetch("./productos.json")
     .then(response => response.json())
-    .then(data => { 
-        productos = data;
-        productos(productos); 
-        console.log(productos);
-    });
-
+    .then(data => agregarProductos(data));
 
 // Mis contenedores
 const shopContent = document.getElementById("shopContent");
 const verCarrito = document.getElementById("verCarrito");
 const modalContainer = document.getElementById("modalContainer");
-
-
-
-/* const productos = [
-    {
-        id: 1,
-        nombre: "Tomate",
-        precio: 300,
-        img: "https://th.bing.com/th/id/OIP.jP2VYVGUy-fX0djlFDZGfAHaE6?pid=ImgDet&rs=1",
-        cantidad: 1,
-    },
-    {
-        id: 2,
-        nombre: "Cebolla",
-        precio: 450,
-        img: "https://greens.com.gt/wp-content/uploads/2020/04/Cebolla-Blanca.jpg",
-        cantidad: 1,
-    },
-    {
-        id: 3,
-        nombre: "Morron",
-        precio: 500,
-        img: "https://th.bing.com/th/id/R.9a8f44ccd90741895d112201db2d5119?rik=5NnavbO5sH2Q1Q&riu=http%3a%2f%2flahoradelasalud.com%2fblog%2fwp-content%2fuploads%2f2020%2f11%2fMORRON-2-1024x768.jpg&ehk=ti%2bEqGyc%2foxEwce%2fdAw71pxsmzSs1FZq%2f8Gd%2fJR%2f%2faY%3d&risl=&pid=ImgRaw&r=0",
-        cantidad: 1,
-    },
-    {
-        id: 4,
-        nombre: "Papa",
-        precio: 200,
-        img: "https://www.todoparaellas.com/u/fotografias/m/2021/3/5/f800x450-18927_70373_5050.jpg",
-        cantidad: 1,
-    },
-    {
-        id: 5,
-        nombre: "Ajo",
-        precio: 100,
-        img: "https://cdn.cienradios.com/wp-content/uploads/sites/3/2020/09/ajo.jpg",
-        cantidad: 1,
-    },
-    {
-        id: 6,
-        nombre: "Manzana",
-        precio: 280,
-        img: "https://th.bing.com/th/id/OIP.YdBKMKhZk429atkjPqNh1AHaHa?pid=ImgDet&rs=1",
-        cantidad: 1,
-    },
-    {
-        id: 7,
-        nombre: "Brocoli",
-        precio: 670,
-        img: "https://misremedios.com/wp-content/uploads/2016/09/brocoli.jpg",
-        cantidad: 1,
-    },
-    {
-        id: 8,
-        nombre: "Hongos",
-        precio: 170,
-        img: "https://th.bing.com/th/id/OIP.VlSO5XMwrnMHYs5qQ9JOfgHaE7?pid=ImgDet&rs=1",
-        cantidad: 1,
-    }
-] */
 
 
 //Agregar productos al carrito
