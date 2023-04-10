@@ -1,9 +1,12 @@
+let productos = [];
+
 // Json
-fetch("./js/productos.json")
+fetch("./productos.json")
     .then(response => response.json())
-    .then(data => {
+    .then(data => { 
         productos = data;
-        productos(productos);
+        productos(productos); 
+        console.log(productos);
     });
 
 
@@ -13,8 +16,8 @@ const verCarrito = document.getElementById("verCarrito");
 const modalContainer = document.getElementById("modalContainer");
 
 
-// Mis productos 
-const productos = [
+
+/* const productos = [
     {
         id: 1,
         nombre: "Tomate",
@@ -71,7 +74,7 @@ const productos = [
         img: "https://th.bing.com/th/id/OIP.VlSO5XMwrnMHYs5qQ9JOfgHaE7?pid=ImgDet&rs=1",
         cantidad: 1,
     }
-]
+] */
 
 
 //Agregar productos al carrito
