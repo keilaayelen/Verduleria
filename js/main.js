@@ -1,15 +1,39 @@
-//main.js
 let productos = [];
 const agregarProductos = listaProductos => {
-    listaProductos.forEach(function (producto) {
-        console.log(producto);
+    productos = listaProductos;
+    productos.forEach(function (producto) {
+        let content = document.createElement("div");
+        content.className = "card";
+        content.innerHTML = `
+            <img src="${producto.img}">
+            <h3>${producto.nombre}</h3>
+            <p class="price">${producto.precio}</p>
+            <p>Cantidad: ${producto.cantidad}</p>
+        `;
+
+        shopContent.append(content);
+
+        let comprar = document.createElement("button");
+        comprar.innerText = "Comprar";
+        comprar.className = "comprar";
+        content.append(comprar);
+
+        comprar.addEventListener("click", () => {
+            carrito.push({
+                id: producto.id,
+                img: producto.img,
+                nombre: producto.nombre,
+                precio: producto.precio,
+            });
+            saveLocal();
+        });
     });
 };
 
 fetch("./productos.json")
     .then(response => response.json())
     .then(data => agregarProductos(data));
-    
+
 // Mis contenedores
 const shopContent = document.getElementById("shopContent");
 const verCarrito = document.getElementById("verCarrito");
@@ -17,7 +41,8 @@ const modalContainer = document.getElementById("modalContainer");
 
 
 //Agregar productos al carrito
-let carrito = [];
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
 productos.forEach((product) => {
     let content = document.createElement("div");
     content.className = "card";
@@ -50,7 +75,6 @@ productos.forEach((product) => {
 
 //Eventos 
 // Ver carrito
-
 const pintarCarrito = () => {
 
     //Creando recuadro de Carrito
@@ -136,10 +160,13 @@ const eliminarProducto = () => {
 
 
 
-// set item 
+//Set item, guardar mi carrito
 const saveLocal = () => {
-    localStorage.setItem("guardarCarro", JSON.stringify(carrito));
+    localStorage.setItem('carrito', JSON.stringify(carrito));
 };
+
+//Get item
+JSON.parse(localStorage.getItem("carrito"));
 
 
 
