@@ -1,22 +1,15 @@
+//main.js
 let productos = [];
-const agregarProductos = productos => {
-    productos.forEach(function (agregarCarrito) {
-        console.log(agregarCarrito);
+const agregarProductos = listaProductos => {
+    listaProductos.forEach(function (producto) {
+        console.log(producto);
     });
 };
-
-// Json
-/* fetch("./productos.json")
-    .then(response => response.json())
-    .then(data => {
-        productos = data;
-        productos(productos);
-    }); */
 
 fetch("./productos.json")
     .then(response => response.json())
     .then(data => agregarProductos(data));
-
+    
 // Mis contenedores
 const shopContent = document.getElementById("shopContent");
 const verCarrito = document.getElementById("verCarrito");
